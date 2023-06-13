@@ -1,7 +1,7 @@
-import { RouteLink, RouteName } from '../enums/route';
+import { RouteLink, RouteName } from '../enums/route/route';
 import { AppRoute } from '../types/route';
 
-export const Routes: Readonly<Array<AppRoute>> = [
+export const AppRoutes: Readonly<Array<AppRoute>> = [
   { name: RouteName.CALCULATOR, link: RouteLink.CALCULATOR },
   { name: RouteName.EXCHANGE, link: RouteLink.EXCHANGE },
 ];
