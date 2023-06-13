@@ -1,5 +1,6 @@
-import './globals.scss';
 import { Inter } from 'next/font/google';
+import { Header } from './common/components/header/header';
+import './globals.scss';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,18 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header>
-          <nav>
-            <ul>
-              <li>
-                <a href="./">Calculator</a>
-              </li>
-              <li>
-                <a href="./exchange">Exchange Rates</a>
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <Header />
         {children}
       </body>
     </html>
