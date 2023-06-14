@@ -1,5 +1,5 @@
 export type CurrencyDTO = {
-  CUR_ID: number;
+  Cur_ID: number;
   Cur_Abbreviation: string;
   Cur_Name: string;
   Cur_Scale: number;

@@ -24,7 +24,7 @@ export class CurrencyRateApi {
 
     const mappedData: Array<Currency> = response.data.map((data) => {
       return {
-        id: data.CUR_ID,
+        id: data.Cur_ID,
         abbreviation: data.Cur_Abbreviation,
         name: data.Cur_Name,
         scale: data.Cur_Scale,
@@ -41,11 +41,9 @@ export class CurrencyRateApi {
 
     if (response.status !== HttpCode.OK) return null;
 
-    console.log(response.data);
-
     const mappedData: Array<Rate> = response.data.map((data) => {
       return {
-        id: data.CUR_ID,
+        id: data.Cur_ID,
         abbreviation: data.Cur_Abbreviation,
         name: data.Cur_Name,
         scale: data.Cur_Scale,
