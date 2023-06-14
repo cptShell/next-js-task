@@ -6,10 +6,9 @@ import { rate as rateActions } from '@/store/actions';
 import { useEffect } from 'react';
 import style from './page.module.scss';
 
-export default function Home() {
+export default function Rates() {
   const dispatch = useAppDispatch();
   const { rates, status } = useAppSelector((state) => state.rates);
-  console.log(rates);
 
   useEffect(() => {
     const loadRates = () => {

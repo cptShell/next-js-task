@@ -1,3 +1,4 @@
+import { BYN_RATE } from '@/common/constants/byn-rate';
 import { ApiRoutes, HttpCode } from '@/common/enums/enums';
 import { Currency, CurrencyDTO, Rate, RateDTO } from '@/common/types/types';
 import axios, { Axios } from 'axios';
@@ -41,15 +42,17 @@ export class CurrencyRateApi {
 
     if (response.status !== HttpCode.OK) return null;
 
-    const mappedData: Array<Rate> = response.data.map((data) => {
-      return {
-        id: data.Cur_ID,
-        abbreviation: data.Cur_Abbreviation,
-        name: data.Cur_Name,
-        scale: data.Cur_Scale,
-        rate: data.Cur_OfficialRate,
-      };
-    });
+    const mappedData: Array<Rate> = [BYN_RATE].concat(
+      response.data.map((data) => {
+        return {
+          id: data.Cur_ID,
+          abbreviation: data.Cur_Abbreviation,
+          name: data.Cur_Name,
+          scale: data.Cur_Scale,
+          rate: data.Cur_OfficialRate,
+        };
+      })
+    );
 
     return mappedData;
   }
