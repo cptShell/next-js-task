@@ -1,2 +1,2 @@
-export * from './api.type';
-export * from './route.type';
+export * from './api/api';
+export * from './route/route';

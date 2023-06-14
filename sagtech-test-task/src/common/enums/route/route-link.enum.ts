@@ -1,4 +1,4 @@
 export enum RouteLink {
-  EXCHANGE = './exchange',
+  RATES = './rates',
   CALCULATOR = './',
 }

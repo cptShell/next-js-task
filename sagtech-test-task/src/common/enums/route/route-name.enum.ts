@@ -1,4 +1,4 @@
 export enum RouteName {
-  EXCHANGE = 'Exchange Rates',
+  RATES = 'Exchange Rates',
   CALCULATOR = 'Calculator',
 }

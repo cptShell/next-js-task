@@ -1,1 +1,2 @@
-export { ApiRoutes } from './api-routes.enum';
+export * from './api-routes.enum';
+export * from './data-status.enum';

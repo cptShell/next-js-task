@@ -3,5 +3,5 @@ import { AppRoute } from '../types/types';
 
 export const AppRoutes: Readonly<Array<AppRoute>> = [
   { name: RouteName.CALCULATOR, link: RouteLink.CALCULATOR },
-  { name: RouteName.EXCHANGE, link: RouteLink.EXCHANGE },
+  { name: RouteName.RATES, link: RouteLink.RATES },
 ];
