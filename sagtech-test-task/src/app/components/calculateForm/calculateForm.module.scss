@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: self-end;
+  gap: 0.3em;
+}
+
+.controls {
+  margin-top: 1em;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

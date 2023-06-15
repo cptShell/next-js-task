@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { AppLoader } from './components/loader/loader';
 import { CalculateForm } from './components/calculateForm/calculateForm';
 import { rate as rateActions } from '@/store/actions';
 import { useAppDispatch, useAppSelector } from '@/hook/hook';
@@ -20,8 +21,11 @@ export default function Calculate() {
 
   return (
     <main className={styles.main}>
-      <h1>Currency Calculator</h1>
-      {status === DataStatus.FULFILLED && <CalculateForm rates={rates} />}
+      {status === DataStatus.FULFILLED ? (
+        <CalculateForm rates={rates} />
+      ) : (
+        <AppLoader />
+      )}
     </main>
   );
 }

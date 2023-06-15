@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { CalculateFormValues } from '@/common/types/types';
 import { useAppSelector } from '@/hook/hook';
 import { calculateDiff } from '@/helpers/helpers';
+import { Title } from '@mantine/core';
 
 type Props = {
   formValues: CalculateFormValues;
@@ -25,5 +26,5 @@ export const CalculatedResult: FC<Props> = ({ formValues }) => {
     resultText = `${fromText} = ${toText}`;
   }
 
-  return <h2>{resultText}</h2>;
+  return <Title order={1}>{resultText}</Title>;
 };

@@ -1,13 +1,9 @@
+import style from './layout.module.scss';
+
 export default function DashboardLayout({
-  children, // will be a page or nested layout
+  children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <section>
-      {/* Include shared UI here e.g. a header or sidebar */}
-      <nav></nav>
-      {children}
-    </section>
-  );
+  return <main className={style.main}>{children}</main>;
 }

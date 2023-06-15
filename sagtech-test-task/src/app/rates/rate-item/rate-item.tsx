@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import { Rate } from '@/common/types/types';
 import { calculateDiff } from '@/helpers/helpers';
-import { FC } from 'react';
+import style from './rate-item.module.scss';
 
 type Props = {
   targetRate: Rate;
@@ -20,7 +21,11 @@ export const RateItem: FC<Props> = ({ targetRate, baseRate }) => {
   const baseText = `${
     Number.isInteger(value) ? value : value.toFixed(4)
   } ${baseAbbreviation}`;
-  const text = `${targetText} = ${baseText}`;
 
-  return <li>{text}</li>;
+  return (
+    <li className={style['rate-item']}>
+      <span>{targetText}</span>
+      <span>{baseText}</span>
+    </li>
+  );
 };

@@ -1,9 +1,6 @@
-// import { Inter } from 'next/font/google';
 import { AppProvider } from '@/store/provider';
 import { Header } from './components/header/header';
 import './globals.scss';
-
-// const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Create Next App',
