@@ -23,6 +23,8 @@ export class CurrencyRateApi {
 
     if (response.status !== HttpCode.OK) return null;
 
+    console.log(response);
+
     const mappedData: Array<Currency> = response.data.map((data) => {
       return {
         id: data.Cur_ID,

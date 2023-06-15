@@ -11,7 +11,6 @@ import { INITIAL_FORM_VALUES } from '@/common/constants/initial-form-values.cons
 import { calculateForm as calculateFormActions } from '@/store/actions';
 import { Abbreviation } from '@/common/enums/enums';
 import style from './calculateForm.module.scss';
-import { setValues } from '@/store/calculator/actions';
 
 type Props = {
   rates: Readonly<Array<Rate>>;
@@ -43,7 +42,8 @@ export const CalculateForm: FC<Props> = ({ rates }) => {
     <>
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <Select
-          size="lg"
+          w={'100%'}
+          size="md"
           label="From"
           defaultValue={Abbreviation.BYN}
           name="currencyFrom"
@@ -54,12 +54,13 @@ export const CalculateForm: FC<Props> = ({ rates }) => {
           w={'100%'}
           min={1}
           label="Scale"
-          size="lg"
+          size="md"
           control={control}
           name={'scale'}
         />
         <Select
-          size="lg"
+          w={'100%'}
+          size="md"
           label="To"
           defaultValue={Abbreviation.BYN}
           name="currencyTo"

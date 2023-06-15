@@ -33,7 +33,7 @@ const Rates: FC = () => {
     label: name,
   }));
   const targetOption = options.find((option) => option.value === baseCurrency);
-  console.log(targetOption);
+
   return (
     <>
       {rates.length ? (

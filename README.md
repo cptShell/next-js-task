@@ -1,6 +1,6 @@
 # Exchange Rate App
 
-## This is an application in which you can view and calculate exchange rates
+## This is an application in which you can view and calculate exchange rates for today
 
 ### Pages:
 
