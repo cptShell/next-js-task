@@ -1,17 +1,16 @@
 'use client';
 
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { Select } from '@mantine/core';
 import { RateItem } from './rate-item/rate-item';
-import { AppLoader } from '../components/loader/loader';
+import { AppLoader } from '@/components/loader/loader';
 import { DataStatus } from '@/common/enums/enums';
 import { useAppDispatch, useAppSelector } from '@/hook/hook';
-import { rate as rateActions } from '@/store/actions';
+import { rate as rateActions, calculateForm } from '@/store/actions';
 import { BYN_RATE } from '@/common/constants/byn-rate';
-import { setValues } from '@/store/calculator/actions';
 import style from './page.module.scss';
 
-export default function Rates() {
+const Rates: FC = () => {
   const dispatch = useAppDispatch();
   const { rates, status } = useAppSelector((state) => state.rates);
   const { formValues } = useAppSelector((state) => state.calculate);
@@ -24,13 +23,9 @@ export default function Rates() {
     loadRates();
   }, []);
 
-  const handleSelect = (value: string = BYN_RATE.abbreviation) => {
-    dispatch(
-      setValues({
-        ...formValues,
-        currencyTo: value || BYN_RATE.abbreviation,
-      })
-    );
+  const handleSelect = (value: string | null) => {
+    const currencyTo = value || BYN_RATE.abbreviation;
+    dispatch(calculateForm.setValues({ ...formValues, currencyTo }));
   };
 
   const options = rates.map(({ abbreviation, name }) => ({
@@ -73,4 +68,6 @@ export default function Rates() {
       )}
     </>
   );
-}
+};
+
+export default Rates;
