@@ -13,7 +13,7 @@ export default function Calculate() {
 
   useEffect(() => {
     const loadRates = () => {
-      if (status === DataStatus.IDLE) dispatch(rateActions.getAll(null));
+      if (status === DataStatus.IDLE) dispatch(rateActions.getAll());
     };
     loadRates();
   }, []);

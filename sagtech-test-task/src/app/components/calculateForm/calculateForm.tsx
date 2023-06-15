@@ -1,34 +1,33 @@
-import { FC, useState } from 'react';
+'use client';
+
+import { FC } from 'react';
 import { useForm } from 'react-hook-form';
+import { CalculatedResult } from '../calculatedResult/calculatedResult';
 import { Rate, CalculateFormValues } from '@/common/types/types';
 import { Abbreviation } from '@/common/enums/enums';
+import { useAppDispatch, useAppSelector } from '@/hook/hook';
+import { INITIAL_FORM_VALUES } from '@/common/constants/initial-form-values.constant';
+import { calculateForm as calculateFormActions } from '@/store/actions';
 import style from './calculateForm.module.scss';
-import { CalculatedResult } from '../calculatedResult/calculatedResult';
 
 type Props = {
   rates: Array<Rate>;
 };
 
-const initialFormValues: CalculateFormValues = {
-  currencyFrom: Abbreviation.BYN,
-  currencyTo: Abbreviation.USD,
-  scale: 1,
-};
-
 export const CalculateForm: FC<Props> = ({ rates }) => {
-  const { register, handleSubmit, reset, getValues } =
-    useForm<CalculateFormValues>({
-      defaultValues: initialFormValues,
-    });
-  const [formValues, setFormValues] = useState(getValues());
+  const dispatch = useAppDispatch();
+  const { formValues } = useAppSelector((state) => state.calculate);
+  const { register, handleSubmit, reset } = useForm<CalculateFormValues>({
+    defaultValues: { ...formValues },
+  });
 
   const onSubmit = (data: CalculateFormValues) => {
-    setFormValues(data);
+    dispatch(calculateFormActions.setValues(data));
   };
 
   const onReset = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setFormValues(initialFormValues);
+    dispatch(calculateFormActions.setValues(INITIAL_FORM_VALUES));
     reset();
   };
 
@@ -44,7 +43,7 @@ export const CalculateForm: FC<Props> = ({ rates }) => {
         <select defaultValue={Abbreviation.BYN} {...register('currencyFrom')}>
           {options}
         </select>
-        <input type="number" {...register('scale')} />
+        <input min={1} type="number" {...register('scale')} />
         <select defaultValue={Abbreviation.USD} {...register('currencyTo')}>
           {options}
         </select>

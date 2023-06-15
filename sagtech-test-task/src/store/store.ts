@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { reducer as rateReducer } from './rate/reducer';
+import { reducer as calculateReducer } from './calculator/reducer';
 import { currencyRateApi } from '@/services/services';
 
 export const extraArgument = {
@@ -7,7 +8,7 @@ export const extraArgument = {
 };
 
 const store = configureStore({
-  reducer: { rates: rateReducer },
+  reducer: { rates: rateReducer, calculate: calculateReducer },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
       thunk: { extraArgument },

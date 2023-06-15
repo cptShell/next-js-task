@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { CalculateFormValues } from '@/common/types/types';
 import { useAppSelector } from '@/hook/hook';
+import { calculateDiff } from '@/helpers/helpers';
 
 type Props = {
   formValues: CalculateFormValues;
@@ -16,12 +17,11 @@ export const CalculatedResult: FC<Props> = ({ formValues }) => {
   let resultText = 'Oops, something went wrong!';
 
   if (rateFrom && rateTo) {
-    const fromValue = rateFrom.rate / rateFrom.scale;
-    const toValue = rateTo.rate / rateTo.scale;
-    const value = (fromValue / toValue) * scale;
+    const value = calculateDiff(rateFrom, rateTo, scale);
     const fromText = `${scale} ${rateFrom.abbreviation}`;
-    const toText = `${value.toFixed(4)} ${rateTo.abbreviation}`;
-
+    const toText = `${Number.isInteger(value) ? value : value.toFixed(4)} ${
+      rateTo.abbreviation
+    }`;
     resultText = `${fromText} = ${toText}`;
   }
 

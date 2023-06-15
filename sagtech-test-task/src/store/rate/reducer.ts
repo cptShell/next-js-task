@@ -8,7 +8,10 @@ type State = {
   status: DataStatus;
 };
 
-const initialState: State = { rates: [], status: DataStatus.IDLE };
+const initialState: State = {
+  rates: [],
+  status: DataStatus.IDLE,
+};
 
 export const reducer = createReducer(initialState, (builder) => {
   builder.addCase(getAll.fulfilled, (state, action) => {
