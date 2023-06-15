@@ -1,16 +1,17 @@
-#Exchange Rate App
+# Exchange Rate App
 
-##This is an application in which you can view and calculate exchange rates
+## This is an application in which you can view and calculate exchange rates
 
-###Pages:
+### Pages:
 
 - Calculate: use this page to calculate currency. Click "calculate" for the data from the form to show the result
 - Exchange Rates: in this page you can watch the course of "base currency" and change "base currency" using currency selector.
 
-###"Base currency" flow:
+### "Base currency" flow:
+
 Its an currency that can be changed by using currency selector from Exchage Rates page and by typing Calculate button in the form in the main page. Base currency is saved switching between pages
 
-###Main stack:
+### Main stack:
 
 - Typescript
 - Next.JS
@@ -18,7 +19,7 @@ Its an currency that can be changed by using currency selector from Exchage Rate
 - Axios
 - SASS
 
-###Extras:
+### Extras:
 
 - Mantine
 - React Hook Form
