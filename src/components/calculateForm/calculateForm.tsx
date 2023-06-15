@@ -11,6 +11,7 @@ import { INITIAL_FORM_VALUES } from '@/common/constants/initial-form-values.cons
 import { calculateForm as calculateFormActions } from '@/store/actions';
 import { Abbreviation } from '@/common/enums/enums';
 import style from './calculateForm.module.scss';
+import { setValues } from '@/store/calculator/actions';
 
 type Props = {
   rates: Readonly<Array<Rate>>;
@@ -30,7 +31,7 @@ export const CalculateForm: FC<Props> = ({ rates }) => {
   const onReset = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(calculateFormActions.setValues(INITIAL_FORM_VALUES));
-    reset();
+    reset(INITIAL_FORM_VALUES);
   };
 
   const options = rates.map(({ abbreviation, name }) => ({

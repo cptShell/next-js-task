@@ -1,3 +1,4 @@
-import { ApiBaseLink } from '@/common/constants/api-routes.constant';
 import { CurrencyRateApi } from './currency-rate/currency-rate.service';
-export const currencyRateApi = new CurrencyRateApi(ApiBaseLink);
+
+const apiPrefix = process.env.NEXT_PUBLIC_API_BASE_LINK as string;
+export const currencyRateApi = new CurrencyRateApi(apiPrefix);

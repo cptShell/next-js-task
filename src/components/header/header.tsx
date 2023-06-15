@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import { AppRoutes } from '@/common/constants/constant';
 import style from './header.module.scss';
+import Link from 'next/link';
 
 export const Header: FC = () => {
   const navItems = AppRoutes.map(({ name, link }) => {
     return (
       <li key={name}>
-        <a href={link}>{name}</a>
+        <Link href={link}>{name}</Link>
       </li>
     );
   });

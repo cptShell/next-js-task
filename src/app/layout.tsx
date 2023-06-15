@@ -1,6 +1,5 @@
 import { FC, ReactNode } from 'react';
 import { Header } from '@/components/header/header';
-import Head from 'next/head';
 import AppProvider from '@/store/provider';
 import './globals.scss';
 

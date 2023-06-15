@@ -4,10 +4,10 @@ import { Currency, CurrencyDTO, Rate, RateDTO } from '@/common/types/types';
 import axios, { Axios } from 'axios';
 
 export class CurrencyRateApi {
-  #axiosInstance: Axios;
+  private axiosInstance: Axios;
 
   constructor(apiPrefix: string) {
-    this.#axiosInstance = axios.create({
+    this.axiosInstance = axios.create({
       baseURL: apiPrefix,
       params: { periodicity: 0 },
       headers: {
@@ -17,7 +17,7 @@ export class CurrencyRateApi {
   }
 
   async getCurrencies(): Promise<Array<Currency> | null> {
-    const response = await this.#axiosInstance.get<Array<CurrencyDTO>>(
+    const response = await this.axiosInstance.get<Array<CurrencyDTO>>(
       ApiRoutes.CURRENCIES
     );
 
@@ -38,7 +38,7 @@ export class CurrencyRateApi {
   async getRates(): Promise<Array<Rate> | null> {
     const url = `${ApiRoutes.RATES}`;
 
-    const response = await this.#axiosInstance.get<Array<RateDTO>>(url);
+    const response = await this.axiosInstance.get<Array<RateDTO>>(url);
 
     if (response.status !== HttpCode.OK) return null;
 
