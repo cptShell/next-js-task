@@ -1,6 +1,6 @@
 import { BYN_RATE } from '@/common/constants/byn-rate';
 import { ApiRoutes, HttpCode } from '@/common/enums/enums';
-import { Currency, CurrencyDTO, Rate, RateDTO } from '@/common/types/types';
+import { CurrencyDTO, Rate, RateDTO } from '@/common/types/types';
 import axios, { Axios } from 'axios';
 
 export class CurrencyRateApi {
