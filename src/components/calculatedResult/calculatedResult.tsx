@@ -20,7 +20,7 @@ export const CalculatedResult: FC<Props> = ({ formValues }) => {
   if (rateFrom && rateTo) {
     const value = calculateDiff(rateFrom, rateTo, scale);
     const fromText = `${scale} ${rateFrom.abbreviation}`;
-    const toText = `${Number.isInteger(value) ? value : value.toFixed(4)} ${
+    const toText = `${Number.isInteger(value) ? value : value.toFixed(2)} ${
       rateTo.abbreviation
     }`;
     resultText = `${fromText} = ${toText}`;

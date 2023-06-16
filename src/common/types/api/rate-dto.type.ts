@@ -1,3 +1,5 @@
-import { CurrencyDTO } from './currency-dto.type';
-
-export type RateDTO = { Cur_OfficialRate: number } & CurrencyDTO;
+export type RateDTO = {
+  Cur_ID: number;
+  Cur_OfficialRate: number;
+  Cur_Scale: number;
+};

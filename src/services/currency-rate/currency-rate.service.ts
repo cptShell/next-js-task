@@ -16,44 +16,53 @@ export class CurrencyRateApi {
     });
   }
 
-  async getCurrencies(): Promise<Array<Currency> | null> {
+  async getCurrencies(): Promise<Array<CurrencyDTO> | null> {
     const response = await this.axiosInstance.get<Array<CurrencyDTO>>(
       ApiRoutes.CURRENCIES
     );
 
     if (response.status !== HttpCode.OK) return null;
 
-    const mappedData: Array<Currency> = response.data.map((data) => {
-      return {
-        id: data.Cur_ID,
-        abbreviation: data.Cur_Abbreviation,
-        name: data.Cur_Name,
-        scale: data.Cur_Scale,
-      };
-    });
-
-    return mappedData;
+    return response.data;
   }
 
   async getRates(): Promise<Array<Rate> | null> {
     const url = `${ApiRoutes.RATES}`;
 
-    const response = await this.axiosInstance.get<Array<RateDTO>>(url);
+    const { data: rates, status } = await this.axiosInstance.get<
+      Array<RateDTO>
+    >(url);
+    const currencies = await this.getCurrencies();
 
-    if (response.status !== HttpCode.OK) return null;
+    if (status !== HttpCode.OK) return null;
 
-    const mappedData: Array<Rate> = [BYN_RATE].concat(
-      response.data.map((data) => {
-        return {
-          id: data.Cur_ID,
-          abbreviation: data.Cur_Abbreviation,
-          name: data.Cur_Name,
-          scale: data.Cur_Scale,
-          rate: data.Cur_OfficialRate,
-        };
-      })
-    );
+    if (rates && currencies) {
+      const mappedData: Array<Rate> = rates.reduce(
+        (acc, rateDTO) => {
+          const targetCurrency = currencies.find(
+            (currency) => currency.Cur_ID === rateDTO.Cur_ID
+          );
 
-    return mappedData;
+          if (targetCurrency) {
+            acc.push({
+              id: rateDTO.Cur_ID,
+              quotName: targetCurrency.Cur_QuotName,
+              nameMulti: targetCurrency.Cur_NameMulti,
+              scale: rateDTO.Cur_Scale,
+              rate: rateDTO.Cur_OfficialRate,
+              name: targetCurrency.Cur_Name,
+              abbreviation: targetCurrency.Cur_Abbreviation,
+            });
+          }
+
+          return acc;
+        },
+        [BYN_RATE]
+      );
+
+      return mappedData;
+    }
+
+    return null;
   }
 }

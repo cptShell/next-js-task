@@ -1,3 +1,9 @@
-import { Currency } from './currency.type';
-
-export type Rate = { rate: number } & Currency;
+export type Rate = {
+  id: number;
+  rate: number;
+  scale: number;
+  quotName: string;
+  name: string;
+  nameMulti: string;
+  abbreviation: string;
+};

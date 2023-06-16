@@ -11,15 +11,15 @@ type Props = {
 export const RateItem: FC<Props> = ({ targetRate, baseRate }) => {
   const {
     abbreviation: targetAbbreviation,
-    name: targetName,
+    quotName: targetQuotName,
     scale: targetScale,
   } = targetRate;
   const { abbreviation: baseAbbreviation } = baseRate;
 
   const value = calculateDiff(targetRate, baseRate, targetScale);
-  const targetText = `${targetScale} ${targetName} (${targetAbbreviation})`;
+  const targetText = `${targetQuotName} (${targetAbbreviation})`;
   const baseText = `${
-    Number.isInteger(value) ? value : value.toFixed(4)
+    Number.isInteger(value) ? value : value.toFixed(2)
   } ${baseAbbreviation}`;
 
   return (

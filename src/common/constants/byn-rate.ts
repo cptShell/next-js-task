@@ -7,4 +7,6 @@ export const BYN_RATE: Rate = {
   name: 'Белорусский рубль',
   rate: 1,
   scale: 1,
+  quotName: '1 Белорусский рубль',
+  nameMulti: 'Белорусских рублей',
 };
